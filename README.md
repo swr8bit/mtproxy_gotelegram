@@ -19,3 +19,13 @@
 
 ```bash
 wget -O setup_gotelegram.sh https://raw.githubusercontent.com/swr8bit/mtproxy_gotelegram/main/setup_gotelegram.sh && chmod +x setup_gotelegram.sh && sudo ./setup_gotelegram.sh
+
+## Зависимости
+
+Этот скрипт использует готовый Docker-образ от разработчика **Sergey Arkhipov** (9seconds).
+
+- **Источник образа:** Docker Hub (`nineseconds/mtg:2`)
+- **Репозиторий исходного кода:** [https://github.com/9seconds/mtg](https://github.com/9seconds/mtg)
+- **Лицензия:** MIT
+
+Все права на код mtg принадлежат Sergey Arkhipov. Данный скрипт лишь вызывает официальный образ и не изменяет его.
