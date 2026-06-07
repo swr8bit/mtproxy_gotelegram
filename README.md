@@ -25,7 +25,7 @@ wget -O setup_gotelegram.sh https://raw.githubusercontent.com/swr8bit/mtproxy_go
 gotelegram
 ```
 
-#### Если вы не root
+### Если вы не root
 ```bash
 sudo -i bash -c "wget -O setup_gotelegram.sh https://raw.githubusercontent.com/swr8bit/mtproxy_gotelegram/main/setup_gotelegram.sh && chmod +x setup_gotelegram.sh && ./setup_gotelegram.sh"
 ```
