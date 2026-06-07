@@ -13,20 +13,27 @@
 
 ---
 
-## Быстрая установка
+## Быстрая установка на сервере
 
 Через терминал (Ubuntu/Debian/CentOS):
 
 ```bash
 wget -O setup_gotelegram.sh https://raw.githubusercontent.com/swr8bit/mtproxy_gotelegram/main/setup_gotelegram.sh && chmod +x setup_gotelegram.sh && sudo ./setup_gotelegram.sh
 ```
+#### Запуск
+```bash
+gotelegram
+```
 
 #### Если вы не root
 ```bash
-sudo -i 
-wget -O setup_gotelegram.sh https://raw.githubusercontent.com/swr8bit/mtproxy_gotelegram/main/setup_gotelegram.sh && chmod +x setup_gotelegram.sh && ./setup_gotelegram.sh
+sudo -i bash -c "wget -O setup_gotelegram.sh https://raw.githubusercontent.com/swr8bit/mtproxy_gotelegram/main/setup_gotelegram.sh && chmod +x setup_gotelegram.sh && ./setup_gotelegram.sh"
 ```
 
+#### Запуск после 
+```bash
+sudo gotelegram
+```
 ---
 
 ## Зависимости
