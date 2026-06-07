@@ -32,9 +32,11 @@ Modifications and additions made by swr8bit are licensed under MIT as above.
 
 ================================================================================
 
-This script installs and depends on:
-  - mtg (https://github.com/9seconds/mtg) — MIT License
-    Copyright (c) 2018 Sergey Arkhipov
+This script installs and depends on the official Docker image:
+  - nineseconds/mtg:2 (https://hub.docker.com/r/nineseconds/mtg)
+
+The source code for this image is available at:
+  - https://github.com/9seconds/mtg (MIT License, Copyright (c) 2018 Sergey Arkhipov)
 
 The MIT license for mtg applies to that project's code only.
 This script is an independent work and is licensed separately.
