@@ -119,7 +119,7 @@ install_deps
 show_promo # Промо теперь только один раз при старте
 
 while true; do
-    echo -e "\n${MAGENTA}=== GoTelegram Manager (by anten-ka) ===${NC}"
+    echo -e "\n${MAGENTA}=== GoTelegram Manager ===${NC}"
     echo -e "1) ${GREEN}Установить / Обновить прокси${NC}"
     echo -e "2) Показать данные подключения${NC}"
     echo -e "3) ${RED}Удалить прокси${NC}"
