@@ -64,23 +64,37 @@ show_config() {
 # --- УСТАНОВКА ---
 menu_install() {
     clear
-    echo -e "${CYAN}--- Выберите домен для маскировки (Fake TLS) ---${NC}"
-    domains=(
-        "google.com" "wikipedia.org" "habr.com" "github.com" 
-        "coursera.org" "udemy.com" "medium.com" "stackoverflow.com"
-        "bbc.com" "cnn.com" "reuters.com" "nytimes.com"
-        "lenta.ru" "rbc.ru" "ria.ru" "kommersant.ru"
-        "stepik.org" "duolingo.com" "khanacademy.org" "ted.com"
-    )
+    echo -e "${CYAN}--- Выберите тип домена для маскировки (Fake TLS) ---${NC}"
+    echo -e "${YELLOW}1)${NC} Из списка популярных доменов"
+    echo -e "${YELLOW}2)${NC} Ввести свой домен"
+    read -p "Выбор [1-2]: " domain_type
     
-    for i in "${!domains[@]}"; do
-        printf "${YELLOW}%2d)${NC} %-20s " "$((i+1))" "${domains[$i]}"
-        [[ $(( (i+1) % 2 )) -eq 0 ]] && echo ""
-    done
-    
-    read -p "Ваш выбор [1-20]: " d_idx
-    DOMAIN=${domains[$((d_idx-1))]}
-    DOMAIN=${DOMAIN:-google.com}
+    if [[ "$domain_type" == "2" ]]; then
+        read -p "Введите свой домен (например: cloudflare.com): " DOMAIN
+        while [[ -z "$DOMAIN" ]]; do
+            echo -e "${RED}Домен не может быть пустым!${NC}"
+            read -p "Введите свой домен: " DOMAIN
+        done
+    else
+        echo -e "\n${CYAN}--- Выберите домен из списка ---${NC}"
+        domains=(
+            "google.com" "wikipedia.org" "habr.com" "github.com" 
+            "coursera.org" "udemy.com" "medium.com" "stackoverflow.com"
+            "bbc.com" "cnn.com" "reuters.com" "nytimes.com"
+            "lenta.ru" "rbc.ru" "ria.ru" "kommersant.ru"
+            "stepik.org" "duolingo.com" "khanacademy.org" "ted.com"
+        )
+        
+        # Вывод доменов в 2 колонки
+        for i in "${!domains[@]}"; do
+            printf "${YELLOW}%2d)${NC} %-20s " "$((i+1))" "${domains[$i]}"
+            [[ $(( (i+1) % 2 )) -eq 0 ]] && echo ""
+        done
+        echo ""
+        read -p "Ваш выбор [1-20]: " d_idx
+        DOMAIN=${domains[$((d_idx-1))]}
+        DOMAIN=${DOMAIN:-google.com}
+    fi
 
     echo -e "\n${CYAN}--- Выберите порт ---${NC}"
     echo -e "1) 443 (Рекомендуется)"
@@ -93,7 +107,7 @@ menu_install() {
         *) PORT=443 ;;
     esac
 
-    echo -e "${YELLOW}[*] Настройка прокси...${NC}"
+    echo -e "${YELLOW}[*] Настройка прокси с доменом: ${GREEN}$DOMAIN${NC}"
     SECRET=$(docker run --rm nineseconds/mtg:2 generate-secret --hex "$DOMAIN")
     docker stop mtproto-proxy &>/dev/null && docker rm mtproto-proxy &>/dev/null
     
@@ -104,7 +118,6 @@ menu_install() {
     show_config
     read -p "Установка завершена. Нажмите Enter..."
 }
-
 # --- ВЫХОД ---
 show_exit() {
     clear
