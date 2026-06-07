@@ -15,10 +15,19 @@
 
 ## Быстрая установка
 
-Через терминал сервера (Ubuntu/Debian/CentOS):
+Через терминал (Ubuntu/Debian/CentOS):
 
 ```bash
 wget -O setup_gotelegram.sh https://raw.githubusercontent.com/swr8bit/mtproxy_gotelegram/main/setup_gotelegram.sh && chmod +x setup_gotelegram.sh && sudo ./setup_gotelegram.sh
+```
+
+#### Если вы не root
+```bash
+sudo -i 
+wget -O setup_gotelegram.sh https://raw.githubusercontent.com/swr8bit/mtproxy_gotelegram/main/setup_gotelegram.sh && chmod +x setup_gotelegram.sh && ./setup_gotelegram.sh
+```
+
+---
 
 ## Зависимости
 
@@ -28,4 +37,4 @@ wget -O setup_gotelegram.sh https://raw.githubusercontent.com/swr8bit/mtproxy_go
 - **Репозиторий исходного кода:** [https://github.com/9seconds/mtg](https://github.com/9seconds/mtg)
 - **Лицензия:** MIT
 
-Все права на код mtg принадлежат Sergey Arkhipov. Данный скрипт лишь вызывает официальный образ и не изменяет его.
+Все права на код mtg принадлежат Sergey Arkhipov.
